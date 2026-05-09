@@ -1,0 +1,48 @@
+const projects = [
+  {
+    title: "Restaurant Website",
+    desc: "Modern design with interactive menu and online reservation system.",
+    image: "/attachments/1703776",
+    tags: ["Modern UI", "Responsive"]
+  },
+  {
+    title: "Business Landing Page",
+    desc: "High-converting layout designed to generate more leads.",
+    image: "/attachments/1703774",
+    tags: ["Conversion Focused", "Mobile First"]
+  },
+  {
+    title: "School Login Portal",
+    desc: "Clean and functional design with accurate user experience.",
+    image: "https://picsum.photos/id/251/600/400",
+    tags: ["Education", "Dashboard"]
+  }
+];
+
+function renderProjects() {
+  const container = document.getElementById('projects');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  projects.forEach(project => {
+    const cardHTML = `
+      <div class="project-card">
+        <img src="\( {project.image}" alt=" \){project.title}">
+        <div class="p-8">
+          <h3 class="font-semibold text-xl mb-3">${project.title}</h3>
+          <p class="text-zinc-400 text-sm mb-6">${project.desc}</p>
+          <div class="flex flex-wrap gap-2">
+            ${project.tags.map(tag => `
+              <span class="text-xs bg-zinc-800 px-3 py-1 rounded-full">${tag}</span>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+    container.innerHTML += cardHTML;
+  });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', renderProjects);
